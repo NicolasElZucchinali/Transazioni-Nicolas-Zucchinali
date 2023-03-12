@@ -1,0 +1,27 @@
+<div *ngIf="transazione" class="col">
+    <div class="card h-100"
+        [ngClass]="{'border-success': transazione.type=='invoice', 'border-dark':transazione.type=='withdrawal'}">
+        <div class="card-body">
+            <h5 class="card-title">{{transazione.business}}</h5>
+        </div>
+        <table class="table mt-4">
+            <tbody>
+                <tr>
+                    <td>importo</td>
+                    <th [ngClass]="{'bg-warning': transazione.amount > 700}">{{transazione.amount | currency }}</th>
+                </tr>
+                <tr>
+                    <td>conto</td>
+                    <th>{{transazione.name}}</th>
+                </tr>
+                <tr>
+                    <td>tipo</td>
+                    <th>{{transazione.type}}</th>
+                </tr>
+            </tbody>
+        </table>
+        <div class="card-footer">
+            <small class="text-muted">Transazione registrata {{transazione.date*1000 | date:" dd/MM/yyyy"}}</small>
+        </div>
+    </div>
+</div>
